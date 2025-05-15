@@ -19,6 +19,8 @@ export default function DailyMode({ user, setMode, setHasPlayed }: {
   const [message, setMessage] = useState('');
   const [gameOver, setGameOver] = useState(false);
   const [timeLeft, setTimeLeft] = useState(MAX_TIME_SECONDS);
+  const [finalScore, setFinalScore] = useState<number | null>(null);
+  const [endReason, setEndReason] = useState<"win" | "giveup" | "timeout" | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -27,6 +29,8 @@ export default function DailyMode({ user, setMode, setHasPlayed }: {
           clearInterval(timer);
           setMessage(`Time's up! The word was ${targetWord.toUpperCase()}`);
           setGameOver(true);
+          setFinalScore(0);
+          setEndReason("timeout");
           submitScore(0);
           return 0;
         }
@@ -66,12 +70,16 @@ export default function DailyMode({ user, setMode, setHasPlayed }: {
     if (guessLower === targetWord) {
       const attemptBonus = (MAX_ATTEMPTS - newGuesses.length) * 50;
       const speedBonus = Math.floor(timeLeft / 10);
-      const finalScore = 100 + attemptBonus + speedBonus;
-      setMessage(`You win! Score: ${finalScore}`);
+      const score = 100 + attemptBonus + speedBonus;
+      setFinalScore(score);
+      setEndReason("win");
+      setMessage(`You win! Score: ${score}`);
       setGameOver(true);
-      submitScore(finalScore);
+      submitScore(score);
     } else if (newGuesses.length === MAX_ATTEMPTS) {
       setMessage(`Game Over. The word was ${targetWord.toUpperCase()}`);
+      setFinalScore(0);
+      setEndReason("timeout");
       setGameOver(true);
       submitScore(0);
     }
@@ -139,27 +147,34 @@ export default function DailyMode({ user, setMode, setHasPlayed }: {
         ].map((row, i) => (
           <div key={i} className={styles.keyRow}>
             {row.map(key => (
-              <button key={key} className={styles.key} onClick={() => handleClick(key)}>{key}</button>
+              <button key={key} className={styles.key} onClick={() => handleClick(key)} disabled={gameOver}>
+                {key}
+              </button>
             ))}
             {i === 2 && (
               <>
-                <button className={styles.keySpecial} onClick={() => handleClick('DELETE')}>←</button>
+                <button className={styles.keySpecial} onClick={() => handleClick('DELETE')} disabled={gameOver}>←</button>
                 <button className={`${styles.keySpecial} ${currentGuess.length === WORD_LENGTH ? styles.active : ''}`}
-                        onClick={() => handleClick('ENTER')} disabled={currentGuess.length !== WORD_LENGTH}>↵</button>
+                        onClick={() => handleClick('ENTER')} disabled={gameOver || currentGuess.length !== WORD_LENGTH}>
+                  ↵
+                </button>
               </>
             )}
           </div>
         ))}
       </div>
 
-      <button className={styles.submitButton} onClick={() => handleClick('ENTER')} disabled={currentGuess.length !== WORD_LENGTH}>
+      <button className={styles.submitButton} onClick={() => handleClick('ENTER')} disabled={gameOver || currentGuess.length !== WORD_LENGTH}>
         Submit
       </button>
 
       <button className={styles.giveUpButton} onClick={() => {
+        if (gameOver) return;
         if (confirm('Are you sure you want to give up?')) {
           setGameOver(true);
           setMessage(`You gave up. The word was ${targetWord.toUpperCase()}`);
+          setFinalScore(0);
+          setEndReason("giveup");
           submitScore(0);
         }
       }}>
@@ -167,6 +182,26 @@ export default function DailyMode({ user, setMode, setHasPlayed }: {
       </button>
 
       <button className={styles.menu} onClick={() => setMode(null)}>Main Menu</button>
+
+      {gameOver && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modal}>
+            {endReason === 'win' ? (
+              <>
+                <h2>You win!</h2>
+                <p>Score: {finalScore}</p>
+              </>
+            ) : (
+              <>
+                <h2>{endReason === 'timeout' ? "Time's up!" : "You gave up."}</h2>
+                <p>The word was: {targetWord.toUpperCase()}</p>
+                <p>Score: 0</p>
+              </>
+            )}
+            <button onClick={() => setMode(null)}>Return to Main Menu</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

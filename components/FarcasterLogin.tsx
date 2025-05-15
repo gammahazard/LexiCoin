@@ -14,16 +14,18 @@ export default function FarcasterLogin() {
 
   return (
     <div className={styles.gameContainer}>
-      <div className={styles.logo}>
-        <svg width="48" height="48" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="48" stroke="#F1C40F" strokeWidth="4" fill="black" />
-          <text x="50%" y="55%" textAnchor="middle" fill="#F1C40F" fontSize="28" fontWeight="bold" dy=".3em">
-            ₿
-          </text>
-        </svg>
+      <div className={styles.logoTitleWrapper}>
+        <div className={styles.logo}>
+          <svg width="48" height="48" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="48" stroke="#F1C40F" strokeWidth="4" fill="black" />
+            <text x="50%" y="55%" textAnchor="middle" fill="#F1C40F" fontSize="28" fontWeight="bold" dy=".3em">
+              ₿
+            </text>
+          </svg>
+        </div>
+        <div className={styles.title}>LexiCoin</div>
       </div>
 
-      <div className={styles.title}>Welcome to LexiCoin</div>
       <p className={styles.description}>
         Guess the correct word within 6 tries. Play the daily challenge to earn points and compete, or just practise!
       </p>
