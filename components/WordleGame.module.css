@@ -1,0 +1,209 @@
+/* components/WordleGame.module.css - Styled for mobile, dark theme */
+
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.timer {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.cell {
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.correct {
+  background-color: var(--correct);
+  color: white;
+  border: none;
+}
+
+.present {
+  background-color: var(--present);
+  color: white;
+  border: none;
+}
+
+.absent {
+  background-color: var(--absent);
+  color: white;
+  border: none;
+}
+
+.message {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: var(--danger);
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.keyRow {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.key,
+.keySpecial {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--key-bg);
+  color: var(--key-text);
+  cursor: pointer;
+  flex: 1;
+  max-width: 40px;
+  text-align: center;
+}
+
+.keySpecial {
+  max-width: 60px;
+}
+
+.active {
+  background-color: var(--accent);
+  font-weight: bold;
+  color: #000;
+}
+
+.submitButton,
+.giveUpButton {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.submitButton {
+  background-color: var(--accent);
+  color: #000;
+  font-weight: bold;
+}
+
+.giveUpButton {
+  background-color: var(--danger);
+  color: white;
+}
+
+.playAgain,
+.menu {
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  margin: 0.4rem;
+  cursor: pointer;
+}
+
+.playAgain {
+  background-color: var(--correct);
+  color: white;
+}
+
+.menu {
+  background-color: var(--accent);
+  color: black;
+}
+
+.endScreen {
+  text-align: center;
+}
+
+.leaderboard {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.leaderboard h2 {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard li {
+  padding: 0.3rem 0;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  .cell {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .key,
+  .keySpecial {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+    max-width: 36px;
+  }
+
+  .keySpecial {
+    max-width: 52px;
+  }
+
+  .submitButton,
+  .giveUpButton {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}

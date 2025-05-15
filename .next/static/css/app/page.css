@@ -1,0 +1,213 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./components/WordleGame.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/* components/WordleGame.module.css - Styled for mobile, dark theme */
+
+.WordleGame_gameContainer__BeYlS {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.WordleGame_timer__CFZ9A {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.WordleGame_grid__Tim1_ {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.WordleGame_row__N1i0J {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.WordleGame_cell__QJqBg {
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.WordleGame_correct__EaBby {
+  background-color: var(--correct);
+  color: white;
+  border: none;
+}
+
+.WordleGame_present__Gf5_Y {
+  background-color: var(--present);
+  color: white;
+  border: none;
+}
+
+.WordleGame_absent__Cwr9p {
+  background-color: var(--absent);
+  color: white;
+  border: none;
+}
+
+.WordleGame_message__zIKZj {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: var(--danger);
+}
+
+.WordleGame_keyboard__gCzO7 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.WordleGame_keyRow__LI93p {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.WordleGame_key__kacwP,
+.WordleGame_keySpecial__oQ_ZI {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--key-bg);
+  color: var(--key-text);
+  cursor: pointer;
+  flex: 1 1;
+  max-width: 40px;
+  text-align: center;
+}
+
+.WordleGame_keySpecial__oQ_ZI {
+  max-width: 60px;
+}
+
+.WordleGame_active__V0SEq {
+  background-color: var(--accent);
+  font-weight: bold;
+  color: #000;
+}
+
+.WordleGame_submitButton__6lTME,
+.WordleGame_giveUpButton__7dKAa {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.WordleGame_submitButton__6lTME {
+  background-color: var(--accent);
+  color: #000;
+  font-weight: bold;
+}
+
+.WordleGame_giveUpButton__7dKAa {
+  background-color: var(--danger);
+  color: white;
+}
+
+.WordleGame_playAgain__J_9Sb,
+.WordleGame_menu__fJBTM {
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  margin: 0.4rem;
+  cursor: pointer;
+}
+
+.WordleGame_playAgain__J_9Sb {
+  background-color: var(--correct);
+  color: white;
+}
+
+.WordleGame_menu__fJBTM {
+  background-color: var(--accent);
+  color: black;
+}
+
+.WordleGame_endScreen__i388t {
+  text-align: center;
+}
+
+.WordleGame_leaderboard__WRXoD {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.WordleGame_leaderboard__WRXoD h2 {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.WordleGame_leaderboard__WRXoD ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.WordleGame_leaderboard__WRXoD li {
+  padding: 0.3rem 0;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  .WordleGame_cell__QJqBg {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .WordleGame_key__kacwP,
+  .WordleGame_keySpecial__oQ_ZI {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+    max-width: 36px;
+  }
+
+  .WordleGame_keySpecial__oQ_ZI {
+    max-width: 52px;
+  }
+
+  .WordleGame_submitButton__6lTME,
+  .WordleGame_giveUpButton__7dKAa {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+

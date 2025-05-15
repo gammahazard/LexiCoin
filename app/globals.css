@@ -1,0 +1,24 @@
+/* app/globals.css - Global dark theme */
+
+:root {
+  --bg: #121212;
+  --text: #f1f1f1;
+  --correct: #6aaa64;
+  --present: #c9b458;
+  --absent: #3a3a3c;
+  --accent: #f1c40f;
+  --danger: #e74c3c;
+  --key-bg: #2c2c2c;
+  --key-text: #f1f1f1;
+  --border: #444;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
