@@ -22,7 +22,7 @@ export default function Home() {
         <h1>Welcome, {user.display_name || `@${user.username}`}</h1>
         <NeynarProfileCard fid={user.fid} />
       </div>
-      <WordleGame user={user} />
+      <WordleGame />
     </main>
   );
 }
