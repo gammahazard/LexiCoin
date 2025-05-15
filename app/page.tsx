@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNeynarContext, NeynarProfileCard } from '@neynar/react';
 import FarcasterLogin from '../components/FarcasterLogin';
 import WordleGame from '../components/WordleGame';
@@ -12,7 +12,8 @@ export default function Home() {
   const [dailyScore, setDailyScore] = useState<number | null>(null);
   const [timeToReset, setTimeToReset] = useState(0);
 
-  useState(() => {
+  // ✅ Fix: useEffect instead of useState
+  useEffect(() => {
     const now = new Date();
     const nextReset = new Date(now);
     nextReset.setUTCHours(0, 0, 0, 0);
@@ -25,7 +26,8 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  useState(() => {
+  // ✅ Fix: useEffect instead of useState
+  useEffect(() => {
     if (user?.display_name) {
       fetch(`https://api.gummybera.com:8443/api/daily-status?username=${encodeURIComponent(user.display_name)}`)
         .then(res => res.json())
