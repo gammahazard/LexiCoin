@@ -59,7 +59,7 @@ export const WORD_LIST = [
   'offset', 'online', 'option', 'orange', 'origin', 'output', 'oxygen', 'palace',
   'parent', 'partly', 'patent', 'paying', 'peanut', 'people', 'period', 'permit',
   'person', 'phrase', 'picked', 'pillar', 'planet', 'player', 'please', 'plenty',
-  'plural', 'pocket', 'poetry', 'police', 'policy', 'portal', 'portion', 'postal',
+  'plural', 'pocket', 'poetry', 'police', 'potato', 'policy', 'portal', 'portion', 'postal',
   'potato', 'powder', 'prayer', 'prefer', 'pretty', 'prince', 'prison', 'profit',
   'prompt', 'proper', 'proved', 'public', 'pulled', 'pursue', 'pushed', 'puzzle',
   'python', 'quarter', 'queens', 'queued', 'quicky', 'purely', 'quality', 'quest',
