@@ -12,7 +12,22 @@ export default function Home() {
   const [dailyScore, setDailyScore] = useState<number | null>(null);
   const [timeToReset, setTimeToReset] = useState(0);
 
-  // ✅ Fix: useEffect instead of useState
+  // ✅ Store user in DB on login
+  useEffect(() => {
+    if (user?.display_name && user?.fid) {
+      fetch('https://api.gummybera.com:8443/api/update-username', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: user.display_name,
+          fid: user.fid,
+          wallet: null // fill this in later if you have wallet connected
+        })
+      }).catch(err => console.error('Failed to sync user to DB:', err));
+    }
+  }, [user]);
+
+  // ✅ Timer to reset daily
   useEffect(() => {
     const now = new Date();
     const nextReset = new Date(now);
@@ -26,7 +41,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // ✅ Fix: useEffect instead of useState
+  // ✅ Fetch user daily score
   useEffect(() => {
     if (user?.display_name) {
       fetch(`https://api.gummybera.com:8443/api/daily-status?username=${encodeURIComponent(user.display_name)}`)
