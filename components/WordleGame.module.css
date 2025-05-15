@@ -12,6 +12,29 @@
   color: var(--text);
 }
 
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
 .timer {
   font-size: 1.2rem;
   margin-bottom: 1rem;
