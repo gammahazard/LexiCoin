@@ -12,22 +12,29 @@ export default function Home() {
   const [dailyScore, setDailyScore] = useState<number | null>(null);
   const [timeToReset, setTimeToReset] = useState(0);
 
-  // ✅ Store user in DB on login
+  // ✅ Sync user to DB when logged in
   useEffect(() => {
-    if (user?.display_name && user?.fid) {
-      fetch('https://api.gummybera.com:8443/api/update-username', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: user.display_name,
-          fid: user.fid,
-          wallet: null // fill this in later if you have wallet connected
-        })
-      }).catch(err => console.error('Failed to sync user to DB:', err));
-    }
+    if (!user || !user.display_name || !user.fid) return;
+
+    const username = user.display_name.trim();
+    const fid = user.fid;
+
+    if (!username) return;
+
+    fetch('https://api.gummybera.com:8443/api/update-username', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, fid })
+    })
+      .then(() => {
+        console.log('[Sync] User created/confirmed in DB:', username);
+      })
+      .catch(err => {
+        console.error('Failed to sync user to DB:', err);
+      });
   }, [user]);
 
-  // ✅ Timer to reset daily
+  // ⏱️ Timer for daily reset
   useEffect(() => {
     const now = new Date();
     const nextReset = new Date(now);
@@ -41,7 +48,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // ✅ Fetch user daily score
+  // 📊 Fetch daily score
   useEffect(() => {
     if (user?.display_name) {
       fetch(`https://api.gummybera.com:8443/api/daily-status?username=${encodeURIComponent(user.display_name)}`)
@@ -74,7 +81,7 @@ export default function Home() {
 
   return (
     <main style={{ padding: '1rem', textAlign: 'center', maxWidth: '480px', margin: '0 auto' }}>
-      <h1 style={{ marginBottom: '1rem' }}>Welcome, {user.display_name || `@${user.username}`}</h1>
+      <h1 style={{ marginBottom: '1rem' }}>Welcome, {user.display_name}</h1>
       <div style={{ marginBottom: '1rem', maxWidth: '100%' }}>
         <NeynarProfileCard fid={user.fid} />
       </div>
